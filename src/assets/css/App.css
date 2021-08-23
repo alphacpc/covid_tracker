@@ -1,0 +1,303 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.Loader{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#0a1931;
+    color: #ffffff;
+}
+
+
+.Loader img{
+
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 60s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.Loader p{
+    text-transform: uppercase;
+    font-size: 44px;
+    letter-spacing: 4px;
+    font-family:'sans-serif';
+}
+
+
+
+
+
+.WordstatsContainer{
+    width: 100%;
+    height: 55vh;
+    background: linear-gradient(to right, #0A1931, #1ABC), url('./../images/banner2.jpg');
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Sans-serif';
+}
+
+.TitleApp{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.WordItems{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.WordItem{
+    padding: 20px 10px 5px 10px;
+    text-align: center;
+}
+
+.TotalConfirmed{
+    border-bottom: 10px solid orangered;
+
+}
+
+.TotalRecovered{
+    border-bottom: 10px solid greenyellow;
+
+}
+
+.TotalActiveCase{
+    border-bottom: 10px solid yellow;
+}
+
+.TotalDeaths{
+    border-bottom: 10px solid red;
+}
+
+.WordItem h2{
+    font-size: 80px;
+    /* display: none; */
+}
+
+.WordItem h3{
+    font-size: 30px;
+}
+
+.WordItem h4{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.divBot{
+    background-color: #f05;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    box-shadow: 0 4px 8px 0 #000;
+    cursor: pointer;
+    transition: all ease 2s;
+}
+.divBot:hover{
+    background-color: orangered;
+    transform: scale(.9,.9);
+}
+
+
+
+
+/* Overlay mainApp */
+.overlay{
+    display: none;
+}
+.overlay.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 444;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.b-agent-demo .b-agent-demo_header{
+    background-color: #0F044C !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.b-agent-demo .b-agent-demo_header-icon,
+.b-agent-demo .b-agent-demo_powered_by{
+    display: none !important;
+}
+
+.b-agent-demo .server-response{
+    background-color: #f05 !important;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 100px;
+}
+
+
+
+
+
+
+
+/* COUNTRY LIST STYLE */
+.CountryList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CountryItem{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    border-bottom: 2px solid rgb(207, 207, 207);
+    padding: 20px 0;    
+}
+
+.case-box{
+    width: 200px;
+}
+
+.case-box h3{
+    font-family: sans-serif;
+    font-size: 26px;
+    color: #012443;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* COUNTRY INPUT CSS */
+.CountriesContainer{
+    padding: 50px;
+    text-align: center;
+}
+
+.TextHeadCountry{
+    font-size: 34px;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    display: none;
+}
+
+#TextInput{
+    background-color: #FFE5E2;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    padding: 20px;
+    width: 600px;
+    letter-spacing: 2px;
+    font-size: 18px;
+    outline: 0;
+}
+
+#SubmitInput{
+    background-color: #0A1931;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 0 40px 40px 0;
+    padding: 14px;
+    /* width: 100px; */
+    letter-spacing: 2px;
+    font-size: 14px;
+    outline: 0;
+    cursor: pointer;
+    transition: all ease .4s;
+}
+#SubmitInput:hover{
+    background-color: #f05;
+}
+
+.PanelHeading{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+}
+
+.TitleItems{
+    background-color: #0A1931;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+.TitleItems span{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 20pzx;
+    width: 200px;
+}
