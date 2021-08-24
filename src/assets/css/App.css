@@ -320,3 +320,28 @@
     font-size: 20pzx;
     width: 200px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DETAIL COUNTRY */
+.CountryNameFromSingle{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 40px;
+}

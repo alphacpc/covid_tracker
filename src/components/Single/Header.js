@@ -5,11 +5,11 @@ const Header = ({countryName, countryCode}) => {
         <div className="WordstatsContainer">
             <h1 className="TitleApp">Statisques de la covid-19</h1>
             <h2 className="CountryNameFromSingle"> 
-                 <ReactFlag 
+                <ReactFlag 
                     className="countryFlag" svg
                     countryCode={countryCode}
-                    style={{ width: "40px", height: "40px"}}
-                />{countryName}
+                    style={{ width: "40px", height: "40px", marginRight:'4px'}}/>
+                {countryName}
             </h2>
         </div>
     )
