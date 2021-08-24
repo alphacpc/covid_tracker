@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import WorldStats from "./components/WordStats";
-import Countries from "./components/Countries";
-import Loader from "./components/Loader";
-import ChatBot from "./components/ChatBot";
+import WorldStats from "./../components/WordStats";
+import Countries from "./../components/Countries";
+import Loader from "./../components/Loader";
+import ChatBot from "./../components/ChatBot";
 import axios from "axios";
-import "./assets/css/App.css";
 
-function App() {
+function Home() {
   const [result, setResult] = useState({
     TotalConfirmed: 0,
     TotalDeaths: 0,
@@ -46,18 +45,18 @@ function App() {
     );
   });
 
-  const GlobalApp = () => <div className="App">
-                            <ChatBot />
+  const GlobalApp = () => (
+    <div className="App">
+      <ChatBot />
 
-                            <div className="WordstatsContainer">
-                              <h1 className="TitleApp">Statisques de la covid-19</h1>
-                              <div className="WordItems">{Stats}</div>
-                            </div>
+      <div className="WordstatsContainer">
+        <h1 className="TitleApp">Statisques de la covid-19</h1>
+        <div className="WordItems">{Stats}</div>
+      </div>
 
-                            <Countries />
-
-                          </div>;
-  
+      <Countries />
+    </div>
+  );
 
   if (result.TotalConfirmed == 0) {
     return <Loader />;
@@ -66,4 +65,4 @@ function App() {
   }
 }
 
-export default App;
+export default Home;

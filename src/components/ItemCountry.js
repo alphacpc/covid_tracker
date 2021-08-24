@@ -1,7 +1,7 @@
 import React from "react";
 import ReactFlag from 'react-country-flag';
 import CountUp from "react-countup";
-
+import { Link, Redirect, useLocation } from "react-router-dom";
 
 
 
@@ -19,7 +19,8 @@ const ItemCountry = ({country}) => {
                     countryCode={country.CountryCode}
                     style={{ width: "80px", height: "80px"}}
                 /></a>
-                <a href="https://www.google.com/">{country.Country}</a>
+                <Link to={`/country/${country.Slug}-${country.CountryCode}`}>{country.Country}</Link>
+                
             </div>
             <div className="case-box">
                 <h3> <CountUp start={0} end={country.TotalConfirmed} duration={1} separator=","/></h3>
