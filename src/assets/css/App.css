@@ -328,6 +328,37 @@
 
 
 
+/* 404 */
+.MessageNotFound{
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    text-align: center;
+}
+.MessageNotFound h1{
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+.MessageNotFound p{
+    letter-spacing: 1px;
+    margin-top: 4px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.LinkBackHome{
+    text-decoration: none;
+    color: #ffffff;
+    margin-top: 10px;
+    background-color: #012443;
+    padding: 10px 20px;
+    border-radius: 40px;
+    transition: all ease .3s;
+}
+.LinkBackHome:hover{
+    background-color: #f05;
+    box-shadow: 0 4px 6px 0 #012443;
+}
 
 
 
