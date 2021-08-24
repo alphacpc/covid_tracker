@@ -205,11 +205,30 @@
 .case-box{
     width: 200px;
 }
+.box-flag{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.case-box span{
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+.box-flag a{
+    text-decoration: none;
+    font-family: 'Sans-serif';
+    color: #0a1931;
+}
 
 .case-box h3{
     font-family: sans-serif;
     font-size: 26px;
     color: #012443;
+    margin-bottom: 5px;
 }
 
 

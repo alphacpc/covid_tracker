@@ -12,6 +12,8 @@ const Countries = () => {
          const res = await axios.get("https://api.covid19api.com/summary");
          const _countries = await res.data.Countries;
          setCountries(_countries);
+
+         console.log(_countries);
          
        } catch (e) {
          console.log(e);
