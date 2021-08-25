@@ -331,7 +331,7 @@
 /* 404 */
 .MessageNotFound{
     position: absolute;
-    bottom: 80px;
+    bottom: 8vh;
     width: 100%;
     text-align: center;
 }
@@ -375,4 +375,25 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 40px;
+}
+
+.containerCountryStats{
+    background-color: #012443;
+    padding: 10vh 20vh ;
+}
+
+.gridItems{
+    background-color: #ffd900;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.gridItem{
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    margin-right: 20px;
+    margin-bottom: 40px;
 }

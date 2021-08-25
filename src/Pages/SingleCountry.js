@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 
 import Header from "./../components/Single/Header";
@@ -23,6 +24,7 @@ const SingleCoutryStats = () => {
       }, []);
 
 
+
     const LoaderCountryDatas = () => {
         return (
             <div>
@@ -31,11 +33,65 @@ const SingleCoutryStats = () => {
         )
     }
 
+    const StatPie = () => {
+        return(
+            <Pie 
+              data={{
+                labels:["Test1","Test2"],
+                datasets:[{
+                    data: [200,232],
+                    backgroundColor: ['#f05','#1abc'],
+                    borderColor:'#fff',
+                    borderWidth: 1
+                }]
+              }}
+
+              options={{
+                legend:{display:false},
+                title: {display: false,text: 'Title'},
+                label:{display:false}
+              }}/>
+        );
+    }
+        
+
     const LoadedCountryDatas = () => {
+        console.log(datasCountry);
         return (
             <div>
                 <Header countryName={name} countryCode={code}/>
-                <h1>Hello { name }</h1>
+                <div className="containerCountryStats">
+                    <div className="gridItems">
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+
+                        <div className="gridItem">
+                            <StatPie />
+                        </div>
+                    </div>                 
+            
+                </div>
             </div>
         )
     }
