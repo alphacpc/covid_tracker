@@ -378,22 +378,32 @@
 }
 
 .containerCountryStats{
-    background-color: #012443;
+    /* background-color: #012443; */
     padding: 10vh 20vh ;
 }
 
 .gridItems{
-    background-color: #ffd900;
+    /* background-color: #ffd900; */
     display: flex;
     flex-wrap: wrap;
-
-
+    justify-content: center;
+    align-items: center;
 }
 
 .gridItem{
-    height: 200px;
-    width: 200px;
-    background-color: pink;
+    height: 23%;
+    width: 23%;
+    /* background-color: pink; */
     margin-right: 20px;
     margin-bottom: 40px;
+    padding: 20px;
+}
+
+.byDate{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 400;
+    letter-spacing: 4px;
 }

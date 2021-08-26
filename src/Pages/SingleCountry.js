@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 
+
 import Header from "./../components/Single/Header";
+import Loader from "./../components/Loader";
 
 const SingleCoutryStats = () => {
     
@@ -27,29 +29,26 @@ const SingleCoutryStats = () => {
 
     const LoaderCountryDatas = () => {
         return (
-            <div>
-                <h1>Encours de chargement</h1>
-            </div>
+            <Loader />
         )
     }
 
-    const StatPie = () => {
+    const StatPie = ({confirmed,recovered,active,death}) => {
         return(
             <Pie 
               data={{
-                labels:["Test1","Test2"],
+                labels:["Confirmé(s)","Guéri(s)","Sous-traitememt(s)","Décèdé(s)"],
                 datasets:[{
-                    data: [200,232],
-                    backgroundColor: ['#f05','#1abc'],
+                    data: [confirmed,recovered,active,death],
+                    backgroundColor: ['#FFC478','#16C79A','#FFF338','#FF2442'],
                     borderColor:'#fff',
                     borderWidth: 1
                 }]
+                
               }}
 
               options={{
-                legend:{display:false},
-                title: {display: false,text: 'Title'},
-                label:{display:false}
+                legend: false,
               }}/>
         );
     }
@@ -62,33 +61,18 @@ const SingleCoutryStats = () => {
                 <Header countryName={name} countryCode={code}/>
                 <div className="containerCountryStats">
                     <div className="gridItems">
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
 
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
+                        {datasCountry.map( (item) => 
+                            <div className="gridItem">
+                                
+                                <StatPie    confirmed={item.Confirmed} 
+                                            active={item.Active}
+                                            death={item.Deaths}
+                                            recovered={item.Recovered}/>
+                                <h3 className="byDate">{new Date(item.Date).toLocaleDateString()}</h3>
+                            </div>
+                        )}
 
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
-
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
-
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
-
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
-
-                        <div className="gridItem">
-                            <StatPie />
-                        </div>
                     </div>                 
             
                 </div>
