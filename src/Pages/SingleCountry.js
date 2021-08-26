@@ -60,9 +60,19 @@ const SingleCoutryStats = () => {
             <div>
                 <Header countryName={name} countryCode={code}/>
                 <div className="containerCountryStats">
+
+                    <div className="Informations">
+                        <p> <span className="infoTitle">Date du premier cas enregistre:</span> <span className="infoValue">{new Date(datasCountry[0].Date).toLocaleDateString()}</span></p>
+                        <p> <span className="infoTitle">Nombre de cas confirme(s):</span> <span className="infoValue">{datasCountry[datasCountry.length - 1].Confirmed}</span></p>
+                        <p> <span className="infoTitle">Nombre de morts depuis le depuis de la pandemie:</span> <span className="infoValue">{datasCountry[datasCountry.length - 1].Deaths}</span></p>
+                        <p> <span className="infoTitle">Date de la derniere mise a jour:</span> <span className="infoValue">{new Date(datasCountry[datasCountry.length - 1].Date).toLocaleDateString()}</span></p>
+                        <p> <span className="infoTitle">Nombre de jours:</span> <span className="infoValue">{datasCountry.length}e jour(s)</span></p>
+                        <p> <span className="infoTitle">Source:</span> <span className="infoValue"><a href="https://api.covid19api.com/summary" target="_blank">Covid19api</a></span></p>
+                    </div>
+
                     <div className="gridItems">
 
-                        {datasCountry.map( (item) => 
+                         {datasCountry.map( (item) => 
                             <div className="gridItem">
                                 
                                 <StatPie    confirmed={item.Confirmed} 
@@ -72,7 +82,6 @@ const SingleCoutryStats = () => {
                                 <h3 className="byDate">{new Date(item.Date).toLocaleDateString()}</h3>
                             </div>
                         )}
-
                     </div>                 
             
                 </div>

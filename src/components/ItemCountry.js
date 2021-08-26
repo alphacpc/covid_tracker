@@ -14,11 +14,11 @@ const ItemCountry = ({country}) => {
     return (
         <div className="CountryItem">
             <div className="case-box box-flag">
-                <a href={`https://api.covid19api.com/dayone/country/${country.Slug}`}><ReactFlag 
+                <Link to={`/country/${country.Slug}-${country.CountryCode}`}><ReactFlag 
                     className="countryFlag" svg
                     countryCode={country.CountryCode}
                     style={{ width: "80px", height: "80px"}}
-                /></a>
+                /></Link>
                 <Link to={`/country/${country.Slug}-${country.CountryCode}`}>{country.Country}</Link>
                 
             </div>

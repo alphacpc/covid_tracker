@@ -407,3 +407,25 @@
     font-weight: 400;
     letter-spacing: 4px;
 }
+
+
+.Informations{
+    font-family: sans-serif;
+    margin-bottom: 60px;
+}
+.Informations .infoTitle{
+    color: #0A1931;
+    font-size: 20px;
+    line-height: 40px;
+}
+.Informations .infoValue{
+    color: #435560;
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+
+.Informations .infoValue a{
+    text-decoration: none;
+    color: #f05;
+    font-weight: bold;
+}
