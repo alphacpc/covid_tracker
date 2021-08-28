@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 
+import Pagination from "@material-ui/lab/Pagination";
+
 
 import Header from "./../components/Single/Header";
 import Loader from "./../components/Loader";
@@ -11,6 +13,21 @@ const SingleCoutryStats = () => {
     
     let { name, code } = useParams();
     const [datasCountry, setDatasCountry] = useState([]);
+    const [page, setPage] = useState(1);
+    const POST_PER_PAGE = 20;
+
+    const [totalPages, setTotalPages] = useState(0);
+
+    const startIndex = (page - 1) * POST_PER_PAGE;
+    const selectedPost = datasCountry.slice(startIndex, startIndex + POST_PER_PAGE);
+
+    console.log(totalPages)
+
+    const handleClickPagination = (e) => {
+        setPage(e.target.innerText);
+        document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
+        e.target.classList.add("Mui-selected");
+      };
 
     useEffect( async () => {
 
@@ -20,9 +37,12 @@ const SingleCoutryStats = () => {
             const datas = await res.data;
             setDatasCountry(datas);
 
-          } catch (e) {
+        }
+        catch (e) {
             console.log(e);
-          }
+        }
+
+        setTotalPages(Math.ceil(datasCountry.length / POST_PER_PAGE));
       }, []);
 
 
@@ -66,23 +86,34 @@ const SingleCoutryStats = () => {
                         <p> <span className="infoTitle">Nombre de cas confirmé(s):</span> <span className="infoValue">{datasCountry[datasCountry.length - 1].Confirmed}</span></p>
                         <p> <span className="infoTitle">Nombre de morts depuis le début de la pandémie:</span> <span className="infoValue">{datasCountry[datasCountry.length - 1].Deaths}</span></p>
                         <p> <span className="infoTitle">Date de la dernière mise à jour:</span> <span className="infoValue">{new Date(datasCountry[datasCountry.length - 1].Date).toLocaleDateString()}</span></p>
-                        <p> <span className="infoTitle">Nombre de jours:</span> <span className="infoValue">{datasCountry.length}e jour(s)</span></p>
+                        {/* <p> <span className="infoTitle">Nombre de jours:</span> <span className="infoValue">{datasCountry.length}e jour(s)</span></p> */}
                         <p> <span className="infoTitle">Source:</span> <span className="infoValue"><a href="https://api.covid19api.com/summary" target="_blank">Covid19api</a></span></p>
                     </div>
-
+                   
                     <div className="gridItems">
 
-                         {datasCountry.map( (item) => 
+                         {selectedPost.map( (item) => 
                             <div className="gridItem">
                                 
-                                <StatPie    confirmed={item.Confirmed} 
+                                <StatPie  key={item.ID}   confirmed={item.Confirmed} 
                                             active={item.Active}
                                             death={item.Deaths}
                                             recovered={item.Recovered}/>
                                 <h3 className="byDate">{new Date(item.Date).toLocaleDateString()}</h3>
                             </div>
                         )}
-                    </div>                 
+                    </div>
+
+                    <div className="Pagination">
+                        <Pagination
+                          count={totalPages}
+                          page={page}
+                          onClick={ handleClickPagination }
+                          color="secondary"
+                        />
+                    </div> 
+
+                               
             
                 </div>
             </div>

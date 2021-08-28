@@ -429,3 +429,8 @@
     color: #f05;
     font-weight: bold;
 }
+
+.Pagination{
+    display: flex;
+    justify-content: center;
+}
