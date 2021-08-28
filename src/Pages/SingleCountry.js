@@ -75,7 +75,6 @@ const SingleCoutryStats = () => {
         
 
     const LoadedCountryDatas = () => {
-        console.log(datasCountry);
         return (
             <div>
                 <Header countryName={name} countryCode={code}/>
