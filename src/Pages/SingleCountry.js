@@ -43,10 +43,10 @@ const SingleCoutryStats = () => {
         }
 
         setTotalPages(Math.ceil(datasCountry.length / POST_PER_PAGE));
-      }, []);
+      }, [totalPages]);
 
-    console.log(datasCountry)
-    console.log(totalPages)
+    
+
 
     const LoaderCountryDatas = () => {
         return (
@@ -61,9 +61,7 @@ const SingleCoutryStats = () => {
         color="secondary"
       />) : "Waiting";
 
-    setTimeout(()=>{
-        console.log("Nombre de page",totalPages)
-    }, 3000)
+
 
 
     const StatPie = ({confirmed,recovered,active,death}) => {
@@ -73,7 +71,7 @@ const SingleCoutryStats = () => {
                 labels:["Confirmé(s)","Guéri(s)","Sous-traitememt(s)","Décèdé(s)"],
                 datasets:[{
                     data: [confirmed,recovered,active,death],
-                    backgroundColor: ['#FF9B6A','#49FF00','#FBFF00','#FF0000'],
+                    backgroundColor: ['#316B83','#49FF00','#FBFF00','#FF0000'],
                     borderColor:'#fff',
                     borderWidth: 1
                 }]
