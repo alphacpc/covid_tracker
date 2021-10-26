@@ -16,12 +16,12 @@ const SingleCoutryStats = () => {
     const [page, setPage] = useState(1);
     const POST_PER_PAGE = 20;
 
-    const [totalPages, setTotalPages] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
 
     const startIndex = (page - 1) * POST_PER_PAGE;
     const selectedPost = datasCountry.slice(startIndex, startIndex + POST_PER_PAGE);
 
-    console.log(totalPages)
+    // console.log(totalPages)
 
     const handleClickPagination = (e) => {
         setPage(e.target.innerText);
@@ -45,13 +45,26 @@ const SingleCoutryStats = () => {
         setTotalPages(Math.ceil(datasCountry.length / POST_PER_PAGE));
       }, []);
 
-
+    console.log(datasCountry)
+    console.log(totalPages)
 
     const LoaderCountryDatas = () => {
         return (
             <Loader />
         )
     }
+
+    const checkTotalPage = (totalPages > 1 ) ? (<Pagination
+        count={totalPages}
+        page={page}
+        onClick={ handleClickPagination }
+        color="secondary"
+      />) : "Waiting";
+
+    setTimeout(()=>{
+        console.log("Nombre de page",totalPages)
+    }, 3000)
+
 
     const StatPie = ({confirmed,recovered,active,death}) => {
         return(
@@ -60,7 +73,7 @@ const SingleCoutryStats = () => {
                 labels:["Confirmé(s)","Guéri(s)","Sous-traitememt(s)","Décèdé(s)"],
                 datasets:[{
                     data: [confirmed,recovered,active,death],
-                    backgroundColor: ['#FFC478','#16C79A','#FFF338','#FF2442'],
+                    backgroundColor: ['#FF9B6A','#49FF00','#FBFF00','#FF0000'],
                     borderColor:'#fff',
                     borderWidth: 1
                 }]
@@ -72,7 +85,8 @@ const SingleCoutryStats = () => {
               }}/>
         );
     }
-        
+
+
 
     const LoadedCountryDatas = () => {
         return (
@@ -104,12 +118,14 @@ const SingleCoutryStats = () => {
                     </div>
 
                     <div className="Pagination">
-                        <Pagination
+                        {/* <Pagination
                           count={totalPages}
                           page={page}
                           onClick={ handleClickPagination }
                           color="secondary"
-                        />
+                        /> */}
+
+                        {checkTotalPage}
                     </div> 
 
                                
