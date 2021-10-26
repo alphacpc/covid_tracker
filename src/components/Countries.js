@@ -6,36 +6,21 @@ const Countries = () => {
 
     const [countries, setCountries] = useState([]);
     const [searchedCountries, setSearchedCountries] = useState([]);
-
+    const [checkSearch, setCheckSearch] = useState(false);
+    
     const searchCountry = (e) => {
-        const value = e.target.value;
-
-        console.log(value + " "+ value.length);
-
+        const value = e.target.value.toLowerCase();
         const countryDetails = countries;
 
-        let FindByCountry = []
+        let FindByCountry = countryDetails.filter((country) => country.Country.toLowerCase().includes(value));
 
-        if(value){
-            countryDetails.map((cur,index) => {
-                const finder = cur.Country.toLowerCase().search(value.toLowerCase());
-
-                if(finder != -1){
-                    FindByCountry.push(countryDetails[index])
-                }
-            })
-
+        if(FindByCountry.length > 0 || value.length > 0 ){
+            setCheckSearch(true);
             setSearchedCountries(FindByCountry);
-        }else{
-            setCountries(countries);
         }
+        else if(value.length === 0){
+            setCheckSearch(false)
 
-        if(value.length === 0){
-            console.log(countries)
-            setCountries(countries);
-        }
-        else{
-            setCountries(searchedCountries);
         }
     }
 
@@ -52,8 +37,10 @@ const Countries = () => {
     }, []);
 
 
-    const countryList = countries.length > 0 ? 
-    countries.map((country, index)=> <ItemCountry key={index} country={country} / >) :  null
+    const myList = ( !checkSearch ) ? countries : searchedCountries;
+
+    const countryList = myList.length > 0 ? 
+    myList.map((country, index)=> <ItemCountry key={index} country={country} / >) :  null;
 
     return (
         <div className="CountriesContainer">
