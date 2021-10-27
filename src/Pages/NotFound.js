@@ -7,7 +7,7 @@ const NotFound = () => {
     return (
         <div>
             <div className="WordstatsContainer">
-                <img width="44%" src={mySVG} style={{marginTop:'30vh'}}/>
+                <img width="44%" alt="covid_404" src={mySVG} style={{marginTop:'30vh'}}/>
             </div>
             <div className="MessageNotFound">
                 <h1>Oups !</h1>

@@ -24,6 +24,7 @@ const ChatBot = () => {
         }}
       >
         <iframe
+          title="iframe_cobot"
           className="iframeBot"
           width="350"
           height="430"

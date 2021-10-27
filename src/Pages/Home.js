@@ -58,7 +58,7 @@ function Home() {
     </div>
   );
 
-  if (result.TotalConfirmed == 0) {
+  if (result.TotalConfirmed === 0) {
     return <Loader />;
   } else {
     return <GlobalApp />;

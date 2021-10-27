@@ -378,8 +378,7 @@
 }
 
 .containerCountryStats{
-    /* background-color: #012443; */
-    padding: 10vh 20vh ;
+    padding: 5% 8% ;
 }
 
 .gridItems{
@@ -433,4 +432,75 @@
 .Pagination{
     display: flex;
     justify-content: center;
+}
+
+
+
+/* ******************** */
+/* ****PAGINATION***** */
+/* ****************** */
+.Pagination{
+    margin-top: 100px;
+}
+.Pagination ul{
+    display: flex;
+    list-style: none;
+}
+
+.Pagination ul li{
+    background-color: #F9E4C8;
+    font-family: sans-serif;
+    padding: 5px 10px;
+    margin:0 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.Pagination ul li.selected{
+    background-color: #f05;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.Pagination ul li:first-child,
+.Pagination ul li:last-child{
+    background-color: #012443 !important;
+    color: #ffffff;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+ 
+
+
+
+
+
+/* *********************************** */
+/* ****Responsive***** */
+/* ********************************* */
+@media only screen and (max-width:768px) {
+
+/* Single Country */
+.gridItem {
+    width: 50%;
+    margin-right: 0px;
+}
+    
+.TitleApp {
+    text-align: center;
+}
+    
+    
+/* Page Home */
+.TitleItems{
+    width: 100%;
+}
+    
+.TitleItems span{
+    font-size: 14px !important;
+    width: auto !important;
+}
+
+
 }

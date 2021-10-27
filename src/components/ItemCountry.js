@@ -1,7 +1,7 @@
 import React from "react";
 import ReactFlag from 'react-country-flag';
 import CountUp from "react-countup";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 

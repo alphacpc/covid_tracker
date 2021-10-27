@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 
+import ReactPaginate from "react-paginate";
+
 import Pagination from "@material-ui/lab/Pagination";
 
 
@@ -24,9 +26,10 @@ const SingleCoutryStats = () => {
     // console.log(totalPages)
 
     const handleClickPagination = (e) => {
-        setPage(e.target.innerText);
-        document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
-        e.target.classList.add("Mui-selected");
+        setPage(e.selected);
+        // document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
+        // e.target.classList.add("Mui-selected");
+        console.log(e.selected);
       };
 
     useEffect( async () => {
@@ -54,12 +57,23 @@ const SingleCoutryStats = () => {
         )
     }
 
-    const checkTotalPage = (totalPages > 1 ) ? (<Pagination
-        count={totalPages}
-        page={page}
-        onClick={ handleClickPagination }
-        color="secondary"
-      />) : "Waiting";
+    const checkTotalPage = (totalPages > 1 ) ? (
+    
+    // <Pagination
+    //     count={totalPages}
+    //     page={page}
+    //     onClick={ handleClickPagination }
+    //     color="secondary"/>
+    <ReactPaginate
+        breakLabel="..." nextLabel="Suivant"
+        previousLabel="Precedent" onPageChange={ handleClickPagination}
+        pageRangeDisplayed={3} pageCount={totalPages}
+        nextLinkClassName="nextLink" previousLinkClassName="previousLink"
+        activeLinkClassName="active"
+    />  
+
+
+      ) : "Waiting";
 
 
 

@@ -3,16 +3,16 @@ import CountUp from 'react-countup';
 const ItemType = ({about,total, percent}) => {
 
     const labelType = () =>{
-        if(about == 'TotalConfirmed'){
+        if(about === 'TotalConfirmed'){
             return 'Nombre de cas confirmés';
         }
-        else if(about == 'TotalRecovered'){
+        else if(about === 'TotalRecovered'){
             return 'Nombre de guéris';
         }
-        else if(about == 'TotalDeaths'){
+        else if(about === 'TotalDeaths'){
             return 'Nombre de décès';
         }
-        else if(about == 'TotalActiveCase'){
+        else if(about === 'TotalActiveCase'){
             return 'Cas sous-traitemet';
         }
     }

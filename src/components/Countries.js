@@ -34,7 +34,7 @@ const Countries = () => {
        } catch (e) {
          console.log(e);
        }
-    }, []);
+    },[]);
 
 
     const myList = ( !checkSearch ) ? countries : searchedCountries;
