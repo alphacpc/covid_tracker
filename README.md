@@ -1,8 +1,14 @@
 # CovidTracker & ChatBot "Cobot"
 
 
+
+
+<img src="https://github.com/alphacpc/covid_tracker/blob/develop/src/assets/images/Screenshot%20from%202021-10-28%2012-06-05.png?raw=true" alt="ScreenShot"/>
+
+
 <div style="display:flex; flex-direction: row">
-    <img src="https://user-images.githubusercontent.com/51186313/139256157-13e9f9eb-8e9c-436d-8928-2efc7c64c994.png" alt="ScreenShot"/>
-    <img src="https://user-images.githubusercontent.com/51186313/139256155-a5357793-331e-4b38-a153-f0a938202834.png" alt="ScreenShot"/>
+    <img src="https://github.com/alphacpc/covid_tracker/blob/develop/src/assets/images/Screenshot%20from%202021-10-28%2012-12-31.png?raw=true" alt="ScreenShot"/>
+    <img src="https://github.com/alphacpc/covid_tracker/blob/develop/src/assets/images/Screenshot%20from%202021-10-28%2012-12-42.png" alt="ScreenShot"/>
+    <img src="https://github.com/alphacpc/covid_tracker/blob/develop/src/assets/images/Screenshot%20from%202021-10-28%2012-12-54.png" alt="ScreenShot"/>
 </div>
 
