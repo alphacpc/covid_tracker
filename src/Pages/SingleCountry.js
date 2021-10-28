@@ -5,63 +5,54 @@ import axios from 'axios';
 
 import ReactPaginate from "react-paginate";
 
-
-
 import Header from "./../components/Single/Header";
 import Loader from "./../components/Loader";
 
 const SingleCoutryStats = () => {
     
-    let { name, code } = useParams();
-    
-    const [datasCountry, setDatasCountry] = useState([]);
     const POST_PER_PAGE = 20;
-    const [currentItems, setCurrentItems] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemOffset, setItemOffset] = useState(0);
+    let { name, code } = useParams();    
+    const [datasCountry, setDatasCountry] = useState([]);
+    const [currentItems, setCurrentItems] = useState([]);
+    const [totalPage, setTotalPage] =  useState(0);
+    const [changed, setChanged] = useState(false);
+    const [start, setStart] = useState(0)
 
-
-    const handleClickPagination = (event) => {
-        const newOffset = (event.selected * POST_PER_PAGE) % datasCountry.length;
-        setItemOffset(newOffset);
+    const handleClickPagination = async (data) => {
+        let currentPage = data.selected;
     };
 
     useEffect( async () => {
-
         try{ 
             const res = await axios.get(`https://api.covid19api.com/dayone/country/${name}`);
             const datas = await res.data;
             await setDatasCountry(datas);
-            const endOffset = await itemOffset + POST_PER_PAGE;
-            await setCurrentItems(datasCountry.slice(itemOffset, endOffset));
-            await setPageCount(Math.ceil(datasCountry.length / POST_PER_PAGE));
-
+            setChanged(true)
         }catch (e) {
             console.log(e);
         }
-      
-    },[itemOffset]);
 
-    
+        setCurrentItems(datasCountry.slice(start, start + POST_PER_PAGE))
 
+        console.log(currentItems)
+
+        setTotalPage(Math.ceil(datasCountry.length / POST_PER_PAGE));  
+
+    },[ start,changed]);
 
     const LoaderCountryDatas = () => {
         return (
             <Loader />
-        )
-        
+        )        
     }
 
-    const checkTotalPage = () => <ReactPaginate
+    const checkTotalPage = (datasCountry.length > 0 ) ? (<ReactPaginate
             breakLabel="..." nextLabel="Suivant"
             previousLabel="Precedent" onPageChange={handleClickPagination}
-            pageRangeDisplayed={3} pageCount={ pageCount }
+            pageRangeDisplayed={3} pageCount={ totalPage }
             nextLinkClassName="nextLink" previousLinkClassName="previousLink"
             activeLinkClassName="active"
-        />;
-
-
-
+        />) : "Chargement en cours!";
 
     const StatPie = ({confirmed,recovered,active,death}) => {
         return(
@@ -76,14 +67,12 @@ const SingleCoutryStats = () => {
                 }]
                 
               }}
-
               options={{
                 legend: false,
               }}/>
         );
     }
 
-    console.log(currentItems)
 
     const LoadedCountryDatas = () => {
         return (
@@ -102,7 +91,7 @@ const SingleCoutryStats = () => {
                    
                     <div className="gridItems">
 
-                         {currentItems.map( (item) => 
+                         {currentItems.map((item) => 
                             <div className="gridItem" key={item.ID}>
                                 
                                 <StatPie  key={item.ID}   confirmed={item.Confirmed} 
@@ -115,14 +104,7 @@ const SingleCoutryStats = () => {
                     </div>
 
                     <div className="Pagination">
-                        {/* <Pagination
-                          count={totalPages}
-                          page={page}
-                          onClick={ handleClickPagination }
-                          color="secondary"
-                        /> */}
-
-                        {checkTotalPage()}
+                        { checkTotalPage }
                     </div> 
 
                                
@@ -133,7 +115,7 @@ const SingleCoutryStats = () => {
     }
 
 
-    return ( currentItems === null ) ? <LoaderCountryDatas /> : <LoadedCountryDatas />
+    return ( currentItems.length === 0 ) ? <LoaderCountryDatas /> : <LoadedCountryDatas />
     
 }
 
