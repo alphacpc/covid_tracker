@@ -1,5 +1,12 @@
 # CovidTracker & ChatBot "Cobot"
 
+<img
+src=“images/SubPronouns.jpg”
+raw=true
+alt=“Subject Pronouns”
+style=“margin-right: 10px;”
+/>
+
 
 ![Screenshot from 2021-10-28 12-06-05](https://user-images.githubusercontent.com/51186313/139256099-afada651-1b8f-48a9-8f6c-f3379c7c3c78.png)
 ![Screenshot from 2021-10-28 12-11-43](https://user-images.githubusercontent.com/51186313/139256106-ff538eb2-a957-4ae6-a5de-812dfc956cc9.png)
