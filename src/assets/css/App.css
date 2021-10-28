@@ -454,6 +454,12 @@
     margin:0 10px;
     border-radius: 20px;
     cursor: pointer;
+    transition: all ease .3s;
+}
+
+.Pagination ul li:hover{
+    background-color: #012443;
+    color: #ffffff;
 }
 
 .Pagination ul li.selected{
@@ -482,25 +488,106 @@
 @media only screen and (max-width:768px) {
 
 /* Single Country */
+.WordstatsContainer{
+    padding: 0 10%;
+}
 .gridItem {
     width: 50%;
     margin-right: 0px;
 }
-    
+  
 .TitleApp {
     text-align: center;
 }
     
     
 /* Page Home */
+.WordstatsContainer.homePage{
+    height: 100vh;
+}
+.WordItems{
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+.WordItems .WordItem{
+    width: 48%;
+    margin-bottom: 50px;
+}
+.WordItem h2{
+    padding-bottom: 20px;
+}
+.WordItem h4{
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+
 .TitleItems{
     width: 100%;
-}
-    
+}   
 .TitleItems span{
     font-size: 14px !important;
     width: auto !important;
 }
+.CountryItem{
+    width: 100%;
+}
 
+
+.divBot{
+    width: 100px;
+    height: 100px;
+}
+.divBot > img{
+    width:  100px;
+    height: 100px;
+}
+
+
+
+}
+
+
+
+/* MOBILE */
+@media only screen and (max-width: 480px){
+
+/* Single Country */
+.PageSingleCountry .WordstatsContainer .TitleApp{
+    font-size: 45px;
+    letter-spacing: 1px;
+}
+.CountryNameFromSingle{
+    font-size: 30px;
+}
+
+.PageSingleCountry .Informations p .infoTitle{
+    font-size: 18px;
+}
+
+.gridItem{
+    width: 100%;
+}
+.gridItem .byDate{
+    font-weight: bold;
+}
+.Pagination ul{
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.Pagination ul li{
+    margin-bottom: 15px;
+}
+
+
+/* Loader */
+.Loader > img{
+    width: 60%;
+}
+
+
+/* Home Page */
 
 }

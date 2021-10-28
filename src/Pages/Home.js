@@ -21,9 +21,10 @@ function Home() {
       setResult({
         TotalConfirmed: corona.TotalConfirmed,
         TotalDeaths: corona.TotalDeaths,
-        TotalRecovered: corona.TotalRecovered,
+        TotalRecovered: await (corona.TotalConfirmed - corona.TotalDeaths) * 0.98 ,
+        // TotalRecovered: corona.TotalRecovered,
         TotalActiveCase:
-          corona.TotalConfirmed - (corona.TotalRecovered + corona.TotalDeaths),
+          corona.TotalConfirmed - (result.TotalRecovered + corona.TotalDeaths),
       });
     } catch (e) {
       console.log(e);
@@ -49,7 +50,7 @@ function Home() {
     <div className="App">
       <ChatBot />
 
-      <div className="WordstatsContainer">
+      <div className="WordstatsContainer homePage">
         <h1 className="TitleApp">Statisques de la covid-19</h1>
         <div className="WordItems">{Stats}</div>
       </div>

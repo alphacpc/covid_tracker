@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import ReactPaginate from "react-paginate";
 
-import Pagination from "@material-ui/lab/Pagination";
 
 
 import Header from "./../components/Single/Header";
@@ -23,30 +22,24 @@ const SingleCoutryStats = () => {
     const startIndex = (page - 1) * POST_PER_PAGE;
     const selectedPost = datasCountry.slice(startIndex, startIndex + POST_PER_PAGE);
 
-    // console.log(totalPages)
 
     const handleClickPagination = (e) => {
         setPage(e.selected);
-        // document.querySelectorAll("ul li .MuiPaginationItem-page").forEach((btn) => btn.classList.remove("Mui-selected"));
-        // e.target.classList.add("Mui-selected");
-        console.log(e.selected);
-      };
+    };
 
     useEffect( async () => {
 
-        try {
-            
+        try{ 
             const res = await axios.get(`https://api.covid19api.com/dayone/country/${name}`);
             const datas = await res.data;
             setDatasCountry(datas);
-
-        }
-        catch (e) {
+        }catch (e) {
             console.log(e);
         }
 
         setTotalPages(Math.ceil(datasCountry.length / POST_PER_PAGE));
-      }, [totalPages]);
+      
+    }, [totalPages]);
 
     
 
@@ -58,22 +51,13 @@ const SingleCoutryStats = () => {
     }
 
     const checkTotalPage = (totalPages > 1 ) ? (
-    
-    // <Pagination
-    //     count={totalPages}
-    //     page={page}
-    //     onClick={ handleClickPagination }
-    //     color="secondary"/>
-    <ReactPaginate
-        breakLabel="..." nextLabel="Suivant"
-        previousLabel="Precedent" onPageChange={ handleClickPagination}
-        pageRangeDisplayed={3} pageCount={totalPages}
-        nextLinkClassName="nextLink" previousLinkClassName="previousLink"
-        activeLinkClassName="active"
-    />  
-
-
-      ) : "Waiting";
+        <ReactPaginate
+            breakLabel="..." nextLabel="Suivant"
+            previousLabel="Precedent" onPageChange={ handleClickPagination}
+            pageRangeDisplayed={3} pageCount={totalPages}
+            nextLinkClassName="nextLink" previousLinkClassName="previousLink"
+            activeLinkClassName="active"
+        />) : "Waiting";
 
 
 
@@ -102,7 +86,7 @@ const SingleCoutryStats = () => {
 
     const LoadedCountryDatas = () => {
         return (
-            <div>
+            <div className="PageSingleCountry">
                 <Header countryName={name} countryCode={code}/>
                 <div className="containerCountryStats">
 
