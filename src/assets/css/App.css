@@ -589,5 +589,53 @@
 
 
 /* Home Page */
+.WordstatsContainer.homePage{
+    height: auto !important;
+    padding-top: 100px;
+}
+.WordstatsContainer.homePage .TitleApp{
+    font-size: 45px;
+}
+
+.WordItems .WordItem{
+    width: 100%;
+}
+
+#TextInput{
+    width: 100%;
+    font-size: 15px;
+}
+
+
+.PanelHeading{
+    display: none;
+}
+
+.CountryItem{
+    flex-wrap: wrap;
+    justify-content: inherit !important;
+}
+.CountryItem > div{
+    width: 48%;
+    margin-bottom: 40px;
+}
+.CountryItem > div:nth-child(2n+1){
+    margin-right: 10px;
+}
+
+
+.divBot{
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 15px;
+}
+.divBot > img{
+    width:  60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+
 
 }
