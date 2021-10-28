@@ -13,18 +13,17 @@ import Loader from "./../components/Loader";
 const SingleCoutryStats = () => {
     
     let { name, code } = useParams();
+    
     const [datasCountry, setDatasCountry] = useState([]);
-    const [page, setPage] = useState(1);
     const POST_PER_PAGE = 20;
-
-    const [totalPages, setTotalPages] = useState(1);
-
-    const startIndex = (page - 1) * POST_PER_PAGE;
-    const selectedPost = datasCountry.slice(startIndex, startIndex + POST_PER_PAGE);
+    const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
 
 
-    const handleClickPagination = (e) => {
-        setPage(e.selected);
+    const handleClickPagination = (event) => {
+        const newOffset = (event.selected * POST_PER_PAGE) % datasCountry.length;
+        setItemOffset(newOffset);
     };
 
     useEffect( async () => {
@@ -32,14 +31,16 @@ const SingleCoutryStats = () => {
         try{ 
             const res = await axios.get(`https://api.covid19api.com/dayone/country/${name}`);
             const datas = await res.data;
-            setDatasCountry(datas);
+            await setDatasCountry(datas);
+            const endOffset = await itemOffset + POST_PER_PAGE;
+            await setCurrentItems(datasCountry.slice(itemOffset, endOffset));
+            await setPageCount(Math.ceil(datasCountry.length / POST_PER_PAGE));
+
         }catch (e) {
             console.log(e);
         }
-
-        setTotalPages(Math.ceil(datasCountry.length / POST_PER_PAGE));
       
-    }, [totalPages]);
+    },[itemOffset]);
 
     
 
@@ -48,16 +49,16 @@ const SingleCoutryStats = () => {
         return (
             <Loader />
         )
+        
     }
 
-    const checkTotalPage = (totalPages > 1 ) ? (
-        <ReactPaginate
+    const checkTotalPage = () => <ReactPaginate
             breakLabel="..." nextLabel="Suivant"
-            previousLabel="Precedent" onPageChange={ handleClickPagination}
-            pageRangeDisplayed={3} pageCount={totalPages}
+            previousLabel="Precedent" onPageChange={handleClickPagination}
+            pageRangeDisplayed={3} pageCount={ pageCount }
             nextLinkClassName="nextLink" previousLinkClassName="previousLink"
             activeLinkClassName="active"
-        />) : "Waiting";
+        />;
 
 
 
@@ -82,7 +83,7 @@ const SingleCoutryStats = () => {
         );
     }
 
-
+    console.log(currentItems)
 
     const LoadedCountryDatas = () => {
         return (
@@ -101,8 +102,8 @@ const SingleCoutryStats = () => {
                    
                     <div className="gridItems">
 
-                         {selectedPost.map( (item) => 
-                            <div className="gridItem">
+                         {currentItems.map( (item) => 
+                            <div className="gridItem" key={item.ID}>
                                 
                                 <StatPie  key={item.ID}   confirmed={item.Confirmed} 
                                             active={item.Active}
@@ -121,7 +122,7 @@ const SingleCoutryStats = () => {
                           color="secondary"
                         /> */}
 
-                        {checkTotalPage}
+                        {checkTotalPage()}
                     </div> 
 
                                
@@ -132,7 +133,7 @@ const SingleCoutryStats = () => {
     }
 
 
-    return ( datasCountry.length == 0) ? <LoaderCountryDatas /> : <LoadedCountryDatas />
+    return ( currentItems === null ) ? <LoaderCountryDatas /> : <LoadedCountryDatas />
     
 }
 
